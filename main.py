@@ -16,8 +16,38 @@ from googleapiclient.http import MediaFileUpload
 # df = pd.DataFrame(data, columns= ['Title','Author'])
 # print(df)
 
-video_wb=openpyxl.load_workbook("Video_List.xlsx")
+wb_name="Video_List.xlsx"
+video_wb=openpyxl.load_workbook(wb_name)
 sheet=video_wb.active
+
+
+
+
+def Upload_video(service,title,description,video_source):
+    request = service.videos().insert(
+        part="snippet,status",
+        autoLevels=True,
+        notifySubscribers=True,
+        stabilize=True,
+        body={
+          "snippet": {
+            # "categoryId": "22",
+            "description": abstract,
+            "title": title
+          },
+          "status": {
+            "privacyStatus": "public"
+          }
+        },
+
+        media_body=MediaFileUpload(video_source, mimetype='video/mp4')
+    )
+    response = request.execute()
+    return (response['status']['uploadStatus'])
+
+
+
+
 
 
 
@@ -25,7 +55,6 @@ sheet=video_wb.active
 
 
 CLIENT_SECRETS_FILE="client_secrets.json"
-
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
 API_SERVICE_NAME = "youtube"
 API_VERSION = 'v3'
@@ -38,31 +67,29 @@ def get_authenticated_service():
 if __name__ == '__main__':
       # When running locally, disable OAuthlib's HTTPs verification. When
       # running in production *do not* leave this option enabled.
-    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
-    service = get_authenticated_service()
+  os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+  service = get_authenticated_service()
 
-    request = service.videos().insert(
-        part="snippet,status",
-        autoLevels=True,
-        notifySubscribers=True,
-        stabilize=True,
-        body={
-          "snippet": {
-            # "categoryId": "22",
-            "description": "Description of uploaded video.",
-            "title": "Area 51 raid."
-          },
-          "status": {
-            "privacyStatus": "public"
-          }
-        },
-        # TODO: For this request to work, you must replace "YOUR_FILE"
-        #       with a pointer to the actual file you are uploading.
-        media_body=MediaFileUpload("IMG_1020.mp4", mimetype='video/mp4')
-    )
 
-    response = request.execute()
-    print(response)
+  maxR=sheet.max_row
+
+  for i in range(2,maxR+1):
+    if(sheet.cell(row=i,column=8).value==0):
+      title=sheet.cell(row=i,column=2).value
+      abstract=sheet.cell(row=i,column=6).value
+      video_source=str(sheet.cell(row=i,column=1).value )+".mp4"
+      status=Upload_video(service,title,abstract,video_source)
+      print(status)
+      if(status=='uploaded'):
+        sheet.cell(row=i,column=8).value=1
+        video_wb.save(wb_name)
+
+
+
+
+
+
+
 
 
 
