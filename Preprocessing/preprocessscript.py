@@ -16,11 +16,11 @@ COVER_SLIDE_FOLDER = "cover_slides\\"
 PROCESSED_VIDEO_FOLDER = "processed_videos\\"
 
 SYMPOSIUM_NAME = "IFCS-EFTF 2019 Symposium, Orlando USA"
-SYMPOSIUM_BANNER = "ifcs-eftf2019-logo-banner-01_web.png"
-SYMPOSIUM_LOGO = "ifcs-eftf2019.png"
+SYMPOSIUM_BANNER = "imgdata\\ifcs-eftf2019-logo-banner-01_web.png"
+SYMPOSIUM_LOGO = "imgdata\\ifcs-eftf2019.png"
 
-UFFC_BANNER = "IEEE-UFFC.jpg"
-UFFC_LOGO = "uffc-logo-small-transparent.png"
+UFFC_BANNER = "imgdata\\IEEE-UFFC.png"
+UFFC_LOGO = "imgdata\\uffc-logo-small-transparent.png"
 
 FINEPRINT_LINE_1 = "Video recorded and uploaded with the authors' consent."
 FINEPRINT_LINE_2 = "Any opinions expressed by the authors do not necessarily reflect the views of the IEEE UFFC Society."
