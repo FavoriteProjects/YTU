@@ -40,7 +40,7 @@ for dataIndex,dataRow in videoList.iterrows():
     videoAuthor = dataRow.Author
     videoTitle = dataRow.Title + VIDEO_EXTENTION
     print("|"+videoTitle + "|")
-    # videoFile = dataRow.Video
+    # videoFile = dataRow.Vide)
 
     # Load the video as a VideoFileClip. If debug mode enabled, keep only
     # the first 30 seconds of each video for further processing.
@@ -101,7 +101,7 @@ for dataIndex,dataRow in videoList.iterrows():
     image1 = image1.convert("RGBA")
     coverImage.paste(image1, (int(videoWidth/2) - int(width1/2),  height1), image1)
 
-    msg = "© 2019 " + videoAuthor + " and IEEE UFFC Society, All Rights Reserved"
+    msg = " 2019 " + videoAuthor + " and IEEE UFFC Society, All Rights Reserved"
     fontsize=2
     fnt = ImageFont.truetype("arial.ttf", fontsize)
     while fnt.getsize(msg)[1] < 0.02*videoHeight:
@@ -161,8 +161,7 @@ for dataIndex,dataRow in videoList.iterrows():
               .margin(left=8, bottom=8, opacity=0.5)
               .set_pos(("left","bottom")))
 
-    compositeVideo = CompositeVideoClip([mainVideo, logoUFFCBottomRight, logoSymposiumBottomLeft])
-    
+    compositeVideo = CompositeVideoClip([mainVideo, logoUFFCBottomRight, logoSymposiumBottomLeft])    
     
     coverSlide = ImageClip(COVER_SLIDE_FOLDER + "coverSlide" + str(videoID) + ".jpg")
     coverSlide = coverSlide.set_duration(COVER_DURATION)

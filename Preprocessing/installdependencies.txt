@@ -1,4 +1,4 @@
-pip install moviepy xlrd matplotlib
+pip install moviepy xlrd matplotlib pandas
 
 
 Missing________________
