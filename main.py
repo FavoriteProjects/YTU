@@ -80,6 +80,6 @@ if __name__ == '__main__':
             video_source = str(sheet.cell(row=i, column=1).value)+".mp4"
             status = Upload_video(service, title, description, video_source)
             print("Uploaded"+" "+str(i-1))
-            if(status == 'uploaded'):
+            if(status == 'done'):
                 sheet.cell(row=i, column=8).value = 1
                 video_wb.save(wb_name)
