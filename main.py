@@ -24,7 +24,7 @@ def Upload_video(service, title, description, video_source):
         body={
             "snippet": {
                 # "categoryId": "22",
-                "description": abstract,
+                "description": description,
                 "title": title
             },
             "status": {
