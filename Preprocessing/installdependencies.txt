@@ -1,8 +1,10 @@
-pip install moviepy xlrd matplotlib pandas
+pip install moviepy==1.0.0 xlrd matplotlib pandas
 
 
 Missing________________
 -> IEEE UFFC banner
 -> 
 
+Carefull_______________
+-> 
 
